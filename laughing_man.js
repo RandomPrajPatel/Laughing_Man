@@ -1,25 +1,31 @@
 const SQUARE_COUNT = 30;
 const TIMER_SPEED = 16.6;
-const SPEED = 5;
+const SPEED = 7;
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     document.querySelector("#square").addEventListener("mouse", () => {
         alert("OMG YOU CLICKED ME!");
     });
     let box = document.querySelector("#box");
 
-  for (let i = 0; i < SQUARE_COUNT; i++) {
-    let square = document.createElement('img');
-    square.src = "laughing_man.jpg";
-    square.alt = "Catch the Laughing Man!";
-    square.className = "square";
+    for (let i = 0; i < SQUARE_COUNT; i++) {
+        let square = document.createElement('img');
+        square.src = "laughing_man.jpg";
+        square.alt = "Catch the Laughing Man!";
+        square.className = "square";
+        square.addEventListener("mouseover", () => {
+            square.src = "orochimaru_50x50.jpg";
+        });
+        square.addEventListener("mouseout", () => {
+            square.src = "laughing_man.jpg";
+        });
 
-    square.style.left = Math.random() * 450 + "px";
-    square.style.top = Math.random() * 350 + "px";
+        square.style.left = Math.random() * 450 + "px";
+        square.style.top = Math.random() * 350 + "px";
 
 
-    box.appendChild(square);
-}
+        box.appendChild(square);
+    }
     Array.from(box.children).forEach((element) => {
         const parent = element.parentElement;
         const maxX = parent.clientWidth - element.clientWidth;
@@ -34,14 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
 
             if (x <= 0 || x >= maxX) {
-    dx *= -1;
-    element.style.borderColor = newColor();
-}
+                dx *= -1;
+                element.style.borderColor = newColor();
+            }
 
-if (y <= 0 || y >= maxY) {
-    dy *= -1;
-    element.style.borderColor = newColor();
-}
+            if (y <= 0 || y >= maxY) {
+                dy *= -1;
+                element.style.borderColor = newColor();
+            }
             x += dx;
             y += dy;
 
@@ -50,10 +56,10 @@ if (y <= 0 || y >= maxY) {
 
         }, TIMER_SPEED)
     });
-}); 
-function newColor(){
-    let r = Math.floor (Math.random()*256); 
-    let g = Math.floor (Math.random()*256); 
-    let b = Math.floor (Math.random()*256); 
-    return `rgb(${r}, ${g}, ${b})`; 
+});
+function newColor() {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
 }
