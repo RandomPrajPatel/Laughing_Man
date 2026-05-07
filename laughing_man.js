@@ -42,11 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (x <= 0 || x >= maxX) {
                 dx *= -1;
                 element.style.borderColor = newColor();
+                element.style.backgroundColor = getColor();
+
             }
 
             if (y <= 0 || y >= maxY) {
                 dy *= -1;
                 element.style.borderColor = newColor();
+                element.style.backgroundColor = getColor();
+
             }
             x += dx;
             y += dy;
